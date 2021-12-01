@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class MethodsSQL {
 
-    // Creando una instancia tipo conección mediante la implementación del patrón Singelton
+    // Creando una instancia tipo conección mediante el método "getConnection" en la clase "ConnectionSQL"
     Connection conectar = ConnectionSQL.getConnection();
 
     // Declalración de variables a utilizar a nivel de clase
