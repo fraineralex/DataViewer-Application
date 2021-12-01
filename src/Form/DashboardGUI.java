@@ -1,30 +1,29 @@
-package Formulario;
+package Form;
 
+// Importando las clases concernientes
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class PantallaPrincipal extends javax.swing.JFrame {
+public class DashboardGUI extends javax.swing.JFrame {
 
-    //public static Conexion conexion = new Conexion();
-    //Conexion conexion = new Conexion();
-    //Connection conectar = conexion.conectar();
-    
-    Connection conectar = Conexion.getConnection();
+    //Instancia del método que permite la conexión a la BD en la clase "ConnectionSQL"
+    Connection conectar = ConnectionSQL.getConnection();
 
-    public PantallaPrincipal() {
+    // Constructor de la clase
+    public DashboardGUI() {
         initComponents();
         setLocationRelativeTo(null);
         tablaRegistros.setModel(mostrarRegistro());
     }
 
+     // Método para mostrar los registros provenientes de la DB
     public DefaultTableModel mostrarRegistro() {
         DefaultTableModel tusuario = new DefaultTableModel();
         tusuario.addColumn("NOMBRE");
         tusuario.addColumn("APELLIDO");
         tusuario.addColumn("TELEFONO");
         tusuario.addColumn("CORREO");
-        //tablaRegistros.setModel(tusuario);
 
         String[] datos = new String[4];
 
@@ -39,7 +38,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 datos[3] = resultado.getString("CORREO");
                 tusuario.addRow(datos);
             }
-            //tablaRegistros.setModel(tusuario);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -48,41 +46,43 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         return tusuario;
 
     }
-    
+
+    // Método que permite editar los campos seleccionados por el usuario.
     public void actualizar() {
-        
+
         int fila = tablaRegistros.getSelectedRow();
-        
+
         String nombre = (this.tablaRegistros.getValueAt(fila, 0).toString());
         String apellido = tablaRegistros.getValueAt(fila, 1).toString();
         String telefono = tablaRegistros.getValueAt(fila, 2).toString();
         String correo = tablaRegistros.getValueAt(fila, 3).toString();
-        
+
         try {
-            PreparedStatement actualizar = conectar.prepareStatement("UPDATE USUARIOS SET NOMBRE = '"+nombre+"', APELLIDOS = '"+apellido+"', TELEFONO = '"+telefono+"', CORREO = '"+correo+"' WHERE CORREO = '"+correo+"'" );
+            PreparedStatement actualizar = conectar.prepareStatement("UPDATE USUARIOS SET NOMBRE = '" + nombre + "', APELLIDOS = '" + apellido + "', TELEFONO = '" + telefono + "', CORREO = '" + correo + "' WHERE CORREO = '" + correo + "'");
             actualizar.executeUpdate();
             JOptionPane.showMessageDialog(this, "Datos actualizados correctamente");
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No se logró actualizar la información, purebe con otros datos. " + e);
         }
     }
-    
-    public void eliminar(){
-        
+
+    // Método que elimina los registros a petición del usuario.
+    public void eliminar() {
+
         int fila = tablaRegistros.getSelectedRow();
-        
+
         String correo = tablaRegistros.getValueAt(fila, 3).toString();
-        
+
         try {
-            PreparedStatement eliminar = conectar.prepareStatement("DELETE FROM USUARIOS WHERE CORREO = '"+correo+"'");
+            PreparedStatement eliminar = conectar.prepareStatement("DELETE FROM USUARIOS WHERE CORREO = '" + correo + "'");
             eliminar.executeUpdate();
             JOptionPane.showMessageDialog(this, "Cliente eliminado satisfactoriamente");
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No se logró eliminar el cliente. " + e);
         }
-    
+
     }
 
     @SuppressWarnings("unchecked")
@@ -242,24 +242,24 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-     eliminar();
-     tablaRegistros.setModel(mostrarRegistro());
+        eliminar();
+        tablaRegistros.setModel(mostrarRegistro());
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        Login ventana = new Login();
+        LoginGUI ventana = new LoginGUI();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        Registro ventana = new Registro();
+        RegisterGUI ventana = new RegisterGUI();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        Login ventana = new Login();
+        LoginGUI ventana = new LoginGUI();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
@@ -268,38 +268,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         actualizar();
         tablaRegistros.setModel(mostrarRegistro());
     }//GEN-LAST:event_btnActualizarActionPerformed
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaPrincipal().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;

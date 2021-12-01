@@ -1,22 +1,21 @@
-// Etiqueta a com.Login
-package Formulario;
+// Etiqueta a Form
+package Form;
 
+// importando clases necesarias
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 
-
 // Herencia de java Swing
-public class Login extends javax.swing.JFrame {
+public class LoginGUI extends javax.swing.JFrame {
 
-    public Login() {
+    // Constructor de la clase
+    public LoginGUI() {
         initComponents();
         setLocationRelativeTo(null);
     }
-
-    Metodos_sql metodos = new Metodos_sql();
-    
-   
+    // Instancia de la clase "MethodsSQL"
+    MethodsSQL metodos = new MethodsSQL();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -34,7 +33,6 @@ public class Login extends javax.swing.JFrame {
         btnIniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(350, 499));
         setMinimumSize(new java.awt.Dimension(350, 499));
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
@@ -124,45 +122,44 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-         
+        // Proceso de leer la tecla enter para iniciar sesión
         txtContraseña.addKeyListener(new KeyListener() {
-        @Override
-        public void keyTyped(KeyEvent e) {
+            @Override
+            public void keyTyped(KeyEvent e) {
 
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                btnIniciarActionPerformed(evt); //Método que tienes que crearte
             }
-        }
 
-        @Override
-        public void keyReleased(KeyEvent e) {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btnIniciarActionPerformed(evt); //Método que tienes que crearte
+                }
+            }
 
-        }
-    });
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        Registro ventana = new Registro();
+        RegisterGUI ventana = new RegisterGUI();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-
+        // Comprobando que el usuario no dejo ninguno de los campos vacios.
         if (txtUsuario.getText().isEmpty() | txtContraseña.getText().isEmpty()) {
-            
-        
+
             contraseña.setForeground(new java.awt.Color(0, 0, 0));
             usuario.setForeground(new java.awt.Color(0, 0, 0));
-            
+
             txtContraseña.setForeground(new java.awt.Color(255, 51, 51));
             txtUsuario.setForeground(new java.awt.Color(255, 51, 51));
 
@@ -170,48 +167,49 @@ public class Login extends javax.swing.JFrame {
 
             txtContraseña.setForeground(new java.awt.Color(0, 0, 0));
             txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
-            
-            contraseña.setForeground(new java.awt.Color(153,153,153));
-            usuario.setForeground(new java.awt.Color(153,153,153));
+
+            contraseña.setForeground(new java.awt.Color(153, 153, 153));
+            usuario.setForeground(new java.awt.Color(153, 153, 153));
 
         } else {
-
-            String busqueda_usuario = Metodos_sql.buscarUsuarioRegistrado(txtUsuario.getText(), txtContraseña.getText());
-
+            
+              // llamando el método que busca los usuarios en la base de datos
+            String busqueda_usuario = MethodsSQL.buscarUsuarioRegistrado(txtUsuario.getText(), txtContraseña.getText());
+               
+              //  ingresando como administrador sin estar registrado en la base de datos
             if (txtUsuario.getText().equals("admin") && txtContraseña.getText().equals("admin")) {
                 JOptionPane.showMessageDialog(this, "Bienvenido, has iniciado sesión como administrador");
-
-                PantallaPrincipal ventana = new PantallaPrincipal();
+                 
+                // llamando el tablero desde la clase "Dasboard"
+                DashboardGUI ventana = new DashboardGUI();
                 ventana.lbNombre.setText("Administrador");
                 ventana.setVisible(true);
                 this.dispose();
+                
+                // Si los datos son correctas, iniciará sesión satisfactoriamente
             } else if (busqueda_usuario.equals("Se ha iniciado sesión correctamente")) {
-                String busqueda_nombre = Metodos_sql.buscarNombre(txtUsuario.getText());
+                String busqueda_nombre = MethodsSQL.buscarNombre(txtUsuario.getText());
                 JOptionPane.showMessageDialog(this, "Bienvenido (a) \n" + busqueda_nombre);
-
-                PantallaPrincipal ventana = new PantallaPrincipal();
+                
+                // llamando el tablero desde la clase "Dasboard"
+                DashboardGUI ventana = new DashboardGUI();
                 ventana.lbNombre.setText(busqueda_nombre);
                 ventana.setVisible(true);
                 this.dispose();
-
+                
+                // Si no lo encuentra significa que debe registrarse
             } else {
                 JOptionPane.showMessageDialog(this, "Este usuario no se encuentra registrado, por favor registrese");
-                txtUsuario.setText(""); //Vacia el JTextField
+                txtUsuario.setText("");
                 txtContraseña.setText("");
                 txtUsuario.requestFocus();
             }
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-    /**
-         * @param args the command line arguments
-         */
+    // Método principal de la clase
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -220,19 +218,19 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
+
+        // Creando y mostrando el formulario
         java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
+            new LoginGUI().setVisible(true);
         });
     }
 

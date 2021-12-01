@@ -1,14 +1,18 @@
-package Formulario;
+package Form;
 
+// Impotación de las clases correspondientes
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexion {
+public class ConnectionSQL {
     
+    
+    // Instancia de conexión privada y estática
     private static Connection conexion = null;
 
-    private Conexion() {
+    // Constructor privado para poder acceder a nuestra conexión
+    private ConnectionSQL() {
         String conexionUrl = "jdbc:sqlserver://LAPTOP-ASUS\\SQLEXPRESS:1433;"
                 + "database=USUARIOS;"
                 + "user=Frainer_Alexander;"
@@ -22,9 +26,10 @@ public class Conexion {
         }
     }
     
+    // Método para establecer conexión a la base de datos
     public static Connection getConnection(){
         if(conexion == null){
-            new Conexion();
+            new ConnectionSQL();
         }
         
         return conexion;  

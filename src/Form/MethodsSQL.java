@@ -1,29 +1,32 @@
-package Formulario;
+package Form;
 
+// Impotaciones correspondientes
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Metodos_sql {
+public class MethodsSQL {
 
-    //public static Conexion conexion = new Conexion();
-    
-    Connection conectar = Conexion.getConnection();
+    // Creando una instancia tipo conección mediante la implementación del patrón Singelton
+    Connection conectar = ConnectionSQL.getConnection();
 
+    // Declalración de variables a utilizar a nivel de clase
     public static PreparedStatement sentencia_preparada;
     public static ResultSet resultado;
     public static int resultado_numero = 0;
 
+    
+    // Método que inserta los datos proporcionados por "RegisterGUI" en la base de datos
     public int guardar(String usuario, String nombre, String apellidos, String telefono, String correo, String contraseña) {
 
         int resultado = 0;
         Connection conexion = null;
-
+         
         String sentencia_guardar = ("INSERT INTO USUARIOS (USUARIO, NOMBRE, APELLIDOS, TELEFONO, CORREO, CONTRASEÑA) VALUES (?, ?, ?, ?, ?, ?)");
 
         try {
-            conexion = Conexion.getConnection();
+            conexion = ConnectionSQL.getConnection();
             sentencia_preparada = conexion.prepareStatement(sentencia_guardar);
             sentencia_preparada.setString(1, usuario);
             sentencia_preparada.setString(2, nombre);
@@ -33,9 +36,9 @@ public class Metodos_sql {
             sentencia_preparada.setString(6, contraseña);
 
             resultado = sentencia_preparada.executeUpdate();
-            //sentencia_preparada.close();
+            sentencia_preparada.close();
 
-            //conexion.close();
+            conexion.close();
 
         } catch (SQLException e) {
             System.out.println(e);
@@ -44,13 +47,14 @@ public class Metodos_sql {
         return resultado;
 
     }
-
+    
+    // Métodoo que permite buscar el nombre y apellido de la base de datos.
     public static String buscarNombre(String usuario) {
 
         String busqueda_nombre = null;
         Connection conexion = null;
         try {
-            conexion = Conexion.getConnection();
+            conexion = ConnectionSQL.getConnection();
             String sentencia_buscar = ("SELECT NOMBRE, APELLIDOS FROM USUARIOS WHERE USUARIO = '" + usuario + "'");
             sentencia_preparada = conexion.prepareStatement(sentencia_buscar);
             resultado = sentencia_preparada.executeQuery();
@@ -60,20 +64,20 @@ public class Metodos_sql {
                 busqueda_nombre = (nombre + " " + apellidos);
             }
 
-            //conexion.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
-
+ 
         return busqueda_nombre;
     }
 
+    // Método que permite la validación de los usuarios registrados en la base de datos.
     public static String buscarUsuarioRegistrado(String usuario, String contraseña) {
         String busqueda_usuario = null;
         Connection conexion = null;
 
         try {
-            conexion = Conexion.getConnection();
+            conexion = ConnectionSQL.getConnection();
             String sentencia_buscar_usuario = ("SELECT NOMBRE, USUARIO, CONTRASEÑA FROM USUARIOS WHERE USUARIO = '" + usuario + "' AND CONTRASEÑA = '" + contraseña + "'");
             sentencia_preparada = conexion.prepareStatement(sentencia_buscar_usuario);
             resultado = sentencia_preparada.executeQuery();
@@ -83,7 +87,6 @@ public class Metodos_sql {
                 busqueda_usuario = "No se ha podido iniciar sesión,";
             }
 
-            //conexion.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
