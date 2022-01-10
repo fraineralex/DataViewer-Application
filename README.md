@@ -26,7 +26,7 @@ It also has a registration system and a login system to manage access to the pan
 
 #
 
-### **project status**
+### **Project status**
 
 - FINALIZED
 
