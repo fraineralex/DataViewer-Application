@@ -6,7 +6,7 @@ This project consists of the visualization of data of registered users in the da
 
 It also has a registration system and a login system to manage access to the panel, it was done with the purpose of managing each registration through the "SQL Server" database administrator, in which I use an established connection. Based on The "Singleton" pattern design.
 
-#
+-----------------------------------------
 
 ### **Used technology**
 
@@ -16,7 +16,7 @@ It also has a registration system and a login system to manage access to the pan
 - POO
 - Singleton
 
-#
+-----------------------------------------
 
 ### **Development environment requirements for integration**
 
@@ -24,31 +24,32 @@ It also has a registration system and a login system to manage access to the pan
 - Java 8 minimum
 - Microsoft SQL Server MS 18
 
-#
+-----------------------------------------
 
 ### **Project status**
 
 - FINALIZED
 
- -------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------
 
- ## Interfaces
+ ## INTERFACES
+ -
  
 
 
-### **- LOGIN**
+#### **- LOGIN**
 
 [![Login.png](https://i.postimg.cc/PxGRkWkY/Login.png)](https://postimg.cc/McDD7jHp)
 
-#
+-----------------------------------------
 
-### **- REGISTER**
+#### **- REGISTER**
 
 [![Register.png](https://i.postimg.cc/1tpYR89T/Register.png)](https://postimg.cc/N9jxpf27)
 
-#
+-----------------------------------------
 
-### **- DASHBOARD**
+#### **- DASHBOARD**
 
 [![Dashboard.png](https://i.postimg.cc/g0LT5M1G/Dashboard.png)](https://postimg.cc/rdcjR98H)
 
