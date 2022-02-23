@@ -38,7 +38,7 @@ It also has a registration system and a login system to manage access to the pan
 
 [![Login.png](https://i.postimg.cc/PxGRkWkY/Login.png)](https://postimg.cc/McDD7jHp)
 
-[![Login.png](https://i.postimg.cc/R0mt5hDq/Login.png)](https://postimg.cc/bZ6r1y8j)
+[![Login.png](https://i.postimg.cc/jq1JqZFp/Login.png)](https://postimg.cc/fkxbBjZC)
 
 **REGISTER**
 
