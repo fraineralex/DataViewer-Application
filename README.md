@@ -31,9 +31,9 @@ It also has a registration system and a login system to manage access to the pan
 - FINALIZED
 
 
-<div align="center">
+
 ## **Interfaces**
-  </div>
+
 
 
 
