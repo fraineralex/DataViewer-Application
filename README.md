@@ -38,11 +38,13 @@ It also has a registration system and a login system to manage access to the pan
 
 [![Login.png](https://i.postimg.cc/PxGRkWkY/Login.png)](https://postimg.cc/McDD7jHp)
 
-[![Login.png](https://i.postimg.cc/jq1JqZFp/Login.png)](https://postimg.cc/fkxbBjZC)
+#
 
 **REGISTER**
 
 [![Register.png](https://i.postimg.cc/1tpYR89T/Register.png)](https://postimg.cc/N9jxpf27)
+
+#
 
 **DASHBOARD**
 
