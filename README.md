@@ -32,7 +32,9 @@ It also has a registration system and a login system to manage access to the pan
 
 #
 
-### **Interfaces**
+
+## **Interfaces**
+
 
 **LOGIN**
 
@@ -49,7 +51,4 @@ It also has a registration system and a login system to manage access to the pan
 **DASHBOARD**
 
 [![Dashboard.png](https://i.postimg.cc/g0LT5M1G/Dashboard.png)](https://postimg.cc/rdcjR98H)
-
-
-
 
