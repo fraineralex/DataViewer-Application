@@ -33,9 +33,7 @@ It also has a registration system and a login system to manage access to the pan
 #
 
 <p align="center">
- 
 ## **Interfaces**
- 
 </p>
 
 
