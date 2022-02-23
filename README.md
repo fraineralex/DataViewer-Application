@@ -30,11 +30,8 @@ It also has a registration system and a login system to manage access to the pan
 
 - FINALIZED
 
------------------------------------------
- ## INTERFACES
+ ## INTERFACES ##
  
-
-
 #### **- LOGIN**
 
 [![Login.png](https://i.postimg.cc/PxGRkWkY/Login.png)](https://postimg.cc/McDD7jHp)
@@ -51,7 +48,3 @@ It also has a registration system and a login system to manage access to the pan
 
 [![Dashboard.png](https://i.postimg.cc/g0LT5M1G/Dashboard.png)](https://postimg.cc/rdcjR98H)
 
-Título 1
-=
-Título 2
--
