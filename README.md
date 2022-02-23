@@ -1,34 +1,18 @@
-# **DATA-VIEWER**
+## Getting Started
 
-### **Project description**
+Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-This project consists of the visualization of data of registered users in the database, this panel allows us to carry out a (CRUD) with the database to create, read, update and delete.
+## Folder Structure
 
-It also has a registration system and a login system to manage access to the panel, it was done with the purpose of managing each registration through the "SQL Server" database administrator, in which I use an established connection. Based on The "Singleton" pattern design.
+The workspace contains two folders by default, where:
 
-#
+- `src`: the folder to maintain sources
+- `lib`: the folder to maintain dependencies
 
-### **Used technology**
+Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-- Java Swing
-- SQL Server
-- NetBeans IDE
-- POO
-- Singleton
+> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-#
+## Dependency Management
 
-### **Development environment requirements for integration**
-
-- Netbeans IDE 12.5
-- Java 8 minimum
-- Microsoft SQL Server MS 18
-
-#
-
-### **Project status**
-
-- FINALIZED
-
-
-
+The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
