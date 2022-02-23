@@ -1,18 +1,33 @@
-## Getting Started
+# **DATA-VIEWER**
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+### **Project description**
 
-## Folder Structure
+This project consists of the visualization of data of registered users in the database, this panel allows us to carry out a (CRUD) with the database to create, read, update and delete.
 
-The workspace contains two folders by default, where:
+It also has a registration system and a login system to manage access to the panel, it was done with the purpose of managing each registration through the "SQL Server" database administrator, in which I use an established connection. Based on The "Singleton" pattern design.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+#
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+### **Used technology**
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- Java Swing
+- SQL Server
+- Visual Studio Code 1.64
+- POO
+- Singleton
 
-## Dependency Management
+#
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+### **Development environment requirements for integration**
+
+- Visual Studio Code
+- Java 8 minimum
+- Microsoft SQL Server MS 18
+
+#
+
+### **Project status**
+
+- FINALIZED
+
+
